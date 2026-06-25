@@ -6,10 +6,11 @@ import type { Service } from '../../data/services';
 interface ServiceRowProps {
   service: Service;
   index?: number;
+  open: boolean;
+  onToggle: () => void;
 }
 
-export default function ServiceRow({ service }: ServiceRowProps) {
-  const [open, setOpen] = useState(false);
+export default function ServiceRow({ service, open, onToggle }: ServiceRowProps) {
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ export default function ServiceRow({ service }: ServiceRowProps) {
     >
       {/* Header Row */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={onToggle}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{

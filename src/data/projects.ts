@@ -14,6 +14,8 @@ export interface Project {
   statLabel: string;
   color: string;
   size: 'large' | 'medium' | 'small';
+  images?: string[];
+  thumbnail?: string;
 }
 
 export const projects: Project[] = [
@@ -33,6 +35,7 @@ export const projects: Project[] = [
     statLabel: 'BRAND AWARENESS',
     color: '#FF2200',
     size: 'large',
+    images: ['/images/fault-1.png', '/images/fault-2.png', '/images/fault-3.png'],
   },
   {
     id: '02',
@@ -50,6 +53,7 @@ export const projects: Project[] = [
     statLabel: 'NEW BUSINESS',
     color: '#C8FF00',
     size: 'medium',
+    images: ['/images/holloway-1.png', '/images/holloway-2.png', '/images/holloway-3.png'],
   },
   {
     id: '03',
@@ -67,6 +71,7 @@ export const projects: Project[] = [
     statLabel: 'CONVERSION',
     color: '#FFFFFF',
     size: 'small',
+    images: ['/images/surge-1.png', '/images/surge-2.png', '/images/surge-3.png'],
   },
   {
     id: '04',
@@ -84,23 +89,27 @@ export const projects: Project[] = [
     statLabel: 'VENUES',
     color: '#C8FF00',
     size: 'small',
+    images: ['/images/null-null-1.png', '/images/null-null-2.png', '/images/null-null-3.png'],
+    thumbnail: '/images/null-null-hero.png',
   },
   {
     id: '05',
     slug: 'brine',
     number: '05',
     title: 'BRINE',
-    subtitle: 'Packaging and brand for a premium fermented foods line.',
-    tags: ['Packaging', 'Brand', 'Print'],
-    year: '2022',
-    client: 'Brine Foods Co.',
-    role: 'Brand Strategy, Packaging Design, Print',
-    challenge: 'Premium fermented foods. The brief said "artisanal warmth." We said no. Deliberately ugly-beautiful. Brutalist grocery. The jar that makes you uncomfortable and then makes you hungry.',
-    outcome: 'Stocked in 340 independent retailers within 6 months. Featured in It\'s Nice That, Packaging Digest.',
-    stat: '340',
-    statLabel: 'RETAILERS',
+    subtitle: 'Esports team identity and tournament branding for a competitive gaming organization.',
+    tags: ['Identity', 'Motion', 'Web'],
+    year: '2023',
+    client: 'Brine Esports',
+    role: 'Brand Identity, Motion Design, Tournament Visual System',
+    challenge: 'A competitive gaming org needed an identity as aggressive as their playstyle. Neon-drenched, glitch-infected, tournament-ready. Every element designed to intimidate opponents before the match even starts.',
+    outcome: 'Brand recognition +280% across Twitch and YouTube. Merch sales tripled. Featured in IGN and Kotaku.',
+    stat: '+280%',
+    statLabel: 'BRAND REACH',
     color: '#FF2200',
     size: 'large',
+    images: ['/images/brine-1.png', '/images/brine-2.png', '/images/brine-3.png'],
+    thumbnail: '/images/brine-hero.png',
   },
   {
     id: '06',
@@ -118,5 +127,6 @@ export const projects: Project[] = [
     statLabel: 'NPS SCORE',
     color: '#FFFFFF',
     size: 'medium',
+    images: ['/images/operator-1.png', '/images/operator-2.png', '/images/operator-3.png'],
   },
 ];

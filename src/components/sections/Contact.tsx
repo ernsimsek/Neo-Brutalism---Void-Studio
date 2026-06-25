@@ -197,7 +197,7 @@ export default function Contact() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '24px',
-                border: '2px solid var(--concrete)',
+                border: 'var(--border)',
                 padding: 'clamp(24px, 3vw, 48px)',
                 background: 'var(--concrete)',
               }}
@@ -243,12 +243,12 @@ export default function Contact() {
                   style={{
                     width: '100%',
                     background: 'var(--void)',
-                    border: '2px solid rgba(255,255,255,0.15)',
+                    border: 'var(--border)',
                     borderRadius: 0,
                     color: 'var(--paper)',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-sm)',
-                    padding: '12px 16px',
+                    fontSize: 'var(--text-base)',
+                    padding: '16px 20px',
                     outline: 'none',
                     cursor: 'none',
                   }}
@@ -281,12 +281,12 @@ export default function Contact() {
                   style={{
                     width: '100%',
                     background: 'var(--void)',
-                    border: '2px solid rgba(255,255,255,0.15)',
+                    border: 'var(--border)',
                     borderRadius: 0,
                     color: 'var(--paper)',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-sm)',
-                    padding: '12px 16px',
+                    fontSize: 'var(--text-base)',
+                    padding: '16px 20px',
                     outline: 'none',
                     cursor: 'none',
                   }}
@@ -319,12 +319,12 @@ export default function Contact() {
                   style={{
                     width: '100%',
                     background: 'var(--void)',
-                    border: '2px solid rgba(255,255,255,0.15)',
+                    border: 'var(--border)',
                     borderRadius: 0,
                     color: 'var(--paper)',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-sm)',
-                    padding: '12px 16px',
+                    fontSize: 'var(--text-base)',
+                    padding: '16px 20px',
                     outline: 'none',
                     resize: 'vertical',
                     cursor: 'none',
@@ -428,7 +428,16 @@ export default function Contact() {
       <style>{`
         .form-input:focus {
           border-color: var(--acid) !important;
-          outline: none !important;
+          outline: 3px solid var(--acid) !important;
+          outline-offset: 2px !important;
+        }
+        .form-input:-webkit-autofill,
+        .form-input:-webkit-autofill:hover,
+        .form-input:-webkit-autofill:focus,
+        .form-input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px var(--void) inset !important;
+          -webkit-text-fill-color: var(--paper) !important;
+          caret-color: var(--paper) !important;
         }
         .form-input::placeholder {
           color: rgba(240,235,225,0.25);

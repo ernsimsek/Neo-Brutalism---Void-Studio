@@ -20,44 +20,26 @@ export default function TeamCard({ member }: TeamCardProps) {
       }}
       className="team-card"
     >
-      {/* Photo placeholder — high contrast initial block */}
+      {/* Photo */}
       <div
         style={{
           width: '100%',
           aspectRatio: '1',
-          background: `linear-gradient(135deg, #111 0%, #333 100%)`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
           position: 'relative',
           overflow: 'hidden',
           filter: 'grayscale(100%) contrast(1.3)',
         }}
         aria-hidden="true"
       >
-        {/* Abstract person silhouette using CSS */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* Head */}
-          <div
-            style={{
-              width: '60px',
-              height: '60px',
-              borderRadius: '50%',
-              background: 'rgba(240,235,225,0.9)',
-              margin: '0 auto 8px',
-            }}
-          />
-          {/* Body */}
-          <div
-            style={{
-              width: '90px',
-              height: '70px',
-              background: 'rgba(240,235,225,0.7)',
-              margin: '0 auto',
-              clipPath: 'polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%)',
-            }}
-          />
-        </div>
+        <img
+          src={member.image}
+          alt={member.name}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        />
         {/* Initials overlay */}
         <div
           style={{
@@ -72,19 +54,12 @@ export default function TeamCard({ member }: TeamCardProps) {
             letterSpacing: '-0.05em',
             zIndex: 2,
             userSelect: 'none',
+            pointerEvents: 'none',
           }}
         >
           {member.initials}
         </div>
-        {/* Scan lines */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.15) 3px, rgba(0,0,0,0.15) 4px)',
-            zIndex: 3,
-          }}
-        />
+
       </div>
 
       {/* Info */}

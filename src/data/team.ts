@@ -5,6 +5,7 @@ export interface TeamMember {
   rotation: number;
   initials: string;
   bgColor: string;
+  image: string;
 }
 
 export const team: TeamMember[] = [
@@ -15,6 +16,7 @@ export const team: TeamMember[] = [
     rotation: -2,
     initials: 'MV',
     bgColor: '#2A2A2A',
+    image: '/images/Mal Voss.jpg',
   },
   {
     name: 'SABLE KIM',
@@ -23,6 +25,7 @@ export const team: TeamMember[] = [
     rotation: 1.5,
     initials: 'SK',
     bgColor: '#1A1A1A',
+    image: '/images/Sable Kim.jpg',
   },
   {
     name: 'OREN MALIK',
@@ -31,6 +34,7 @@ export const team: TeamMember[] = [
     rotation: -1,
     initials: 'OM',
     bgColor: '#0F0F0F',
+    image: '/images/Oren Malik.jpg',
   },
   {
     name: 'PETRA CROSS',
@@ -39,6 +43,7 @@ export const team: TeamMember[] = [
     rotation: 2,
     initials: 'PC',
     bgColor: '#2A2A2A',
+    image: '/images/Petra Cross.jpg',
   },
 ];
 

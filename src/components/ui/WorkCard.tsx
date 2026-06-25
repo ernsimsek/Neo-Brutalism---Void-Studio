@@ -7,8 +7,9 @@ interface WorkCardProps {
   style?: React.CSSProperties;
 }
 
-// Generate a pseudo-image using CSS patterns based on project
-function ProjectVisual({ project }: { project: Project }) {
+function ProjectVisual({ project, hovered }: { project: Project; hovered: boolean }) {
+  const image = project.thumbnail || (project.images && project.images.length > 0 ? project.images[0] : null);
+
   const patterns: Record<string, string> = {
     fault: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,34,0,0.3) 10px, rgba(255,34,0,0.3) 11px), repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(200,255,0,0.1) 10px, rgba(200,255,0,0.1) 11px)`,
     holloway: `repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 21px), repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.05) 20px, rgba(255,255,255,0.05) 21px)`,
@@ -22,51 +23,59 @@ function ProjectVisual({ project }: { project: Project }) {
     <div
       style={{
         width: '100%',
+        flex: 1,
+        minHeight: 0,
         paddingBottom: '65%',
         position: 'relative',
-        background: `#1A1A1A ${patterns[project.slug] || ''}`,
+        background: image
+          ? `var(--void) url(${image}) center top / cover no-repeat`
+          : `#1A1A1A ${patterns[project.slug] || ''}`,
         overflow: 'hidden',
-        filter: 'grayscale(100%)',
-        transition: 'filter 0ms',
+        filter: hovered ? 'grayscale(0%)' : 'grayscale(100%)',
+        transition: 'filter 300ms ease',
       }}
       className={`card-visual card-visual-${project.slug}`}
     >
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            fontWeight: 900,
-            color: project.color,
-            opacity: 0.6,
-            letterSpacing: '-0.05em',
-          }}
-        >
-          {project.title}
-        </span>
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          top: '16px',
-          left: '16px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: 'var(--text-xs)',
-          color: 'var(--chalk)',
-          opacity: 0.4,
-          letterSpacing: '0.1em',
-        }}
-      >
-        {project.number}
-      </div>
+      {image ? null : (
+        <>
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+                fontWeight: 900,
+                color: project.color,
+                opacity: 0.6,
+                letterSpacing: '-0.05em',
+              }}
+            >
+              {project.title}
+            </span>
+          </div>
+          <div
+            style={{
+              position: 'absolute',
+              top: '16px',
+              left: '16px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              color: 'var(--chalk)',
+              opacity: 0.4,
+              letterSpacing: '0.1em',
+            }}
+          >
+            {project.number}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -97,18 +106,18 @@ export default function WorkCard({ project, style }: WorkCardProps) {
       aria-label={`View case study: ${project.title}`}
       onKeyDown={(e) => e.key === 'Enter' && navigate(`/work/${project.slug}`)}
     >
-      {/* Visual */}
       <div
         style={{
           flex: 1,
           overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
         }}
         className={`work-card-image ${hovered ? 'color' : ''}`}
       >
-        <ProjectVisual project={project} />
+        <ProjectVisual project={project} hovered={hovered} />
       </div>
 
-      {/* Info Strip */}
       <div
         style={{
           borderTop: '2px solid var(--chalk)',
@@ -146,16 +155,6 @@ export default function WorkCard({ project, style }: WorkCardProps) {
           {project.tags[0].toUpperCase()}
         </div>
       </div>
-
-      <style>{`
-        .work-card-image .card-visual {
-          filter: grayscale(100%);
-          transition: filter 0ms;
-        }
-        .work-card-image.color .card-visual {
-          filter: grayscale(0%);
-        }
-      `}</style>
     </article>
   );
 }

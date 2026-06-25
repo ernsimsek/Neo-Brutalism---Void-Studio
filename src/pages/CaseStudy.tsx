@@ -308,28 +308,44 @@ export default function CaseStudy() {
                 overflow: 'hidden',
               }}
             >
-              {/* Visual placeholder */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundImage: `repeating-linear-gradient(${i * 30}deg, transparent, transparent ${8 + i * 4}px, ${project.color}${i === 0 ? '20' : '10'} ${8 + i * 4}px, ${project.color}${i === 0 ? '20' : '10'} ${9 + i * 4}px)`,
-                }}
-              />
-              <div
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(1.5rem, 4vw, 4rem)',
-                  fontWeight: 900,
-                  color: project.color,
-                  opacity: 0.3,
-                  letterSpacing: '-0.05em',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              >
-                {project.title}
-              </div>
+              {project.images && project.images[i] ? (
+                <img
+                  src={project.images[i]}
+                  alt={`${project.title} - Work ${i + 1}`}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center top',
+                  }}
+                />
+              ) : (
+                <>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      backgroundImage: `repeating-linear-gradient(${i * 30}deg, transparent, transparent ${8 + i * 4}px, ${project.color}${i === 0 ? '20' : '10'} ${8 + i * 4}px, ${project.color}${i === 0 ? '20' : '10'} ${9 + i * 4}px)`,
+                    }}
+                  />
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(1.5rem, 4vw, 4rem)',
+                      fontWeight: 900,
+                      color: project.color,
+                      opacity: 0.3,
+                      letterSpacing: '-0.05em',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                  >
+                    {project.title}
+                  </div>
+                </>
+              )}
               <div
                 style={{
                   position: 'absolute',

@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ServiceRow from '../ui/ServiceRow';
 import { services } from '../../data/services';
 
 export default function Services() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
   return (
     <section
       id="services"
@@ -66,7 +69,12 @@ export default function Services() {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ delay: i * 0.05, duration: 0.4 }}
           >
-            <ServiceRow service={service} index={i} />
+            <ServiceRow
+              service={service}
+              index={i}
+              open={activeIndex === i}
+              onToggle={() => setActiveIndex(activeIndex === i ? null : i)}
+            />
           </motion.div>
         ))}
       </div>

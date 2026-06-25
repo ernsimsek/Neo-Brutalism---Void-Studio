@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -14,6 +14,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -38,7 +39,15 @@ export default function Nav() {
     setMobileOpen(false);
     if (href.startsWith('#')) {
       const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate('/');
+        setTimeout(() => {
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 600);
+      }
     }
   };
 
