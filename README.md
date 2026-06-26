@@ -46,3 +46,5 @@ src/
 - Route-level code splitting, vendor chunking
 - All images in WebP format
 - Lighthouse performance: 87
+
+<img width="1918" height="1078" alt="Ekran görüntüsü 2026-06-26 095630" src="https://github.com/user-attachments/assets/9f825692-773e-4a1c-b3e4-ab8bfff816dd" />
